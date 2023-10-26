@@ -2,7 +2,11 @@ package es.ieslavereda.demojavafx.controller;
 
 import es.ieslavereda.demojavafx.model.Tenedor;
 
+import java.util.concurrent.Semaphore;
+
 public class FilosofoHIlo implements  Runnable{
+    private int vecesComidas; // Número de veces que el filósofo ha comido
+    private static Semaphore semaphore = new Semaphore(4); // Un semáforo con 4 permisos
 
     private String name;
     private Tenedor tenedor;
@@ -12,6 +16,8 @@ public class FilosofoHIlo implements  Runnable{
         this.name = name;
         this.tenedor = tenedor;
         this.tenedor2 = tenedor2;
+        this.vecesComidas = 5000;
+
     }
 
     public void cogerTenedores() {
@@ -56,12 +62,18 @@ public class FilosofoHIlo implements  Runnable{
 
     @Override
     public void run() {
+        int comidasRealizadas = 0;
+
         while (true) {
             siesta();
-            cogerTenedores();
-            dejarTenedor();
-        }
-
+            try {
+                semaphore.acquire(); // Un filósofo adquiere un permiso del semáforo
+                cogerTenedores();
+                dejarTenedor();
+                semaphore.release(); // El filósofo libera el permiso
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
 
     }
-}
+}}

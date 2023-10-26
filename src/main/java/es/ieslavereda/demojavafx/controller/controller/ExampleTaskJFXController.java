@@ -1,6 +1,7 @@
-//package es.ieslavereda.demojavafx.controller;
+//package es.ieslavereda.demojavafx.controller.controller;
 //
-//import es.ieslavereda.demojavafx.model.RegionColor;
+//
+//import es.ieslavereda.demojavafx.controller.model.RegionColor;
 //import javafx.concurrent.Task;
 //import javafx.fxml.FXML;
 //import javafx.geometry.Insets;
@@ -30,7 +31,6 @@
 //        public MyTask(){
 //            valueProperty().addListener((observableValue, regionColor, newValue) -> {
 //                newValue.getRegion().setBackground(new Background(new BackgroundFill(newValue.getColor(),new CornerRadii(5),new Insets(-5))));
-//
 //            });
 //        }
 //        @Override
