@@ -22,11 +22,13 @@ public class FilosofoHIlo implements  Runnable{
 
     public void cogerTenedores() {
         synchronized (tenedor) {
+            // tenedor esta bloqueado
             synchronized (tenedor2) {
+                // tenedor2 esta bloqueado
                 System.out.println(name + " ha cogido los tenedores y está comiendo.");
-                tenedor.setInUse(true);
-                tenedor2.setInUse(true);
                 try {
+                    tenedor.setInUse(true);
+                    tenedor2.setInUse(true);
                     Thread.sleep(1000);
                     dejarTenedor();
                 } catch (InterruptedException e) {
@@ -34,13 +36,11 @@ public class FilosofoHIlo implements  Runnable{
                 }
                 System.out.println(name + " ha terminado de comer.");
             }
+            // tenedor2 deja de estar bloqueado
         }
+        // tenedor deja de estar bloqueado
     }
 
-//    public void cogerTenedor(){
-//        tenedor.setInUse(true);
-//        tenedor2.setInUse(true);
-//    }
 
     public void dejarTenedor(){
         tenedor.setInUse(false);
@@ -49,9 +49,7 @@ public class FilosofoHIlo implements  Runnable{
 
 
     public  void siesta(){
-
         try {
-
             Thread.sleep(4000);
         }catch (InterruptedException e) {
             throw new RuntimeException(e);
@@ -62,18 +60,13 @@ public class FilosofoHIlo implements  Runnable{
 
     @Override
     public void run() {
-        int comidasRealizadas = 0;
 
         while (true) {
-            siesta();
-            try {
-                semaphore.acquire(); // Un filósofo adquiere un permiso del semáforo
+
                 cogerTenedores();
                 dejarTenedor();
-                semaphore.release(); // El filósofo libera el permiso
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+                siesta();
+
 
     }
 }}
