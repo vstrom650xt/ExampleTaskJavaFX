@@ -1,0 +1,132 @@
+Index: src/main/java/es/ieslavereda/demojavafx/controller/FilosofoHIlo.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package es.ieslavereda.demojavafx.controller;\n\nimport es.ieslavereda.demojavafx.model.Tenedor;\n\npublic class FilosofoHIlo implements Runnable {\n\n\n    private String name;\n    private Tenedor tenedor;\n    private Tenedor tenedor2;\n\n    public FilosofoHIlo(String name, Tenedor tenedor, Tenedor tenedor2) {\n        this.name = name;\n        this.tenedor = tenedor;\n        this.tenedor2 = tenedor2;\n\n    }\n\n    /// no pueden 2 coger el mismo , no hay que consultar estado\n\n    public void cogerTenedores() {\n            synchronized (tenedor) {\n                // tenedor esta bloqueado\n                synchronized (tenedor2) {\n                    // tenedor2 esta bloqueado\n                    System.out.println(name + \" ha cogido los tenedores y está comiendo.\");\n                    try {\n                        Thread.sleep(1000);\n                    } catch (InterruptedException e) {\n                        e.printStackTrace();\n                    }\n                    System.out.println(name + \" ha terminado de comer.\");\n                }\n            }\n\n\n\n        siesta();\n\n    }\n    public void siesta() {\n        try {\n            Thread.sleep(1000);\n        } catch (InterruptedException e) {\n            throw new RuntimeException(e);\n        }\n    }\n\n    @Override\n    public void run() {\n        while (true) {\n            cogerTenedores();\n        }\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/es/ieslavereda/demojavafx/controller/FilosofoHIlo.java b/src/main/java/es/ieslavereda/demojavafx/controller/FilosofoHIlo.java
+--- a/src/main/java/es/ieslavereda/demojavafx/controller/FilosofoHIlo.java	(revision d02584ce4df7aba916d87ed22f7593cb9ad9e494)
++++ b/src/main/java/es/ieslavereda/demojavafx/controller/FilosofoHIlo.java	(date 1698692525178)
+@@ -2,54 +2,110 @@
+ 
+ import es.ieslavereda.demojavafx.model.Tenedor;
+ 
+-public class FilosofoHIlo implements Runnable {
++public class FilosofoHIlo implements  Runnable{
+ 
+-
+     private String name;
+     private Tenedor tenedor;
+     private Tenedor tenedor2;
+ 
+-    public FilosofoHIlo(String name, Tenedor tenedor, Tenedor tenedor2) {
++    public FilosofoHIlo(String name,Tenedor tenedor, Tenedor tenedor2) {
+         this.name = name;
+         this.tenedor = tenedor;
+         this.tenedor2 = tenedor2;
+-
+     }
+-
+-    /// no pueden 2 coger el mismo , no hay que consultar estado
+ 
+     public void cogerTenedores() {
++
++        if (tenedor.isInUse()){
++            synchronized (tenedor2) {
++                // tenedor esta bloqueado
++                synchronized (tenedor) {
++                    // tenedor 2 esta bloqueado
++                    System.out.println(name + " ha cogido los tenedores y está comiendo.");
++
++                    try {
++                        Thread.sleep(1000);
++                        dejarTenedor();
++                    } catch (InterruptedException e) {
++                        e.printStackTrace();
++                    }
++                    System.out.println(name + " ha terminado de comer.");
++                }
++                // tenedor2 deja de estar bloqueado
++            }
++            // tenedor deja de estar bloqueado
++        }else {
+             synchronized (tenedor) {
+                 // tenedor esta bloqueado
+                 synchronized (tenedor2) {
+-                    // tenedor2 esta bloqueado
++                    // tenedor 2 esta bloqueado
+                     System.out.println(name + " ha cogido los tenedores y está comiendo.");
++
+                     try {
+                         Thread.sleep(1000);
++                        dejarTenedor();
+                     } catch (InterruptedException e) {
+                         e.printStackTrace();
+                     }
+                     System.out.println(name + " ha terminado de comer.");
+                 }
++                // tenedor2 deja de estar bloqueado
+             }
+ 
++        }
+ 
++    }
++//        synchronized (tenedor) {
++//            // tenedor esta bloqueado
++//            synchronized (tenedor2) {
++//                // tenedor 2 esta bloqueado
++//                System.out.println(name + " ha cogido los tenedores y está comiendo.");
++//
++//                try {
++//                    Thread.sleep(1000);
++//                    dejarTenedor();
++//                } catch (InterruptedException e) {
++//                    e.printStackTrace();
++//                }
++//                System.out.println(name + " ha terminado de comer.");
++//            }
++//            // tenedor2 deja de estar bloqueado
++//        }
++//        // tenedor deja de estar bloqueado
++//    }
+ 
+-        siesta();
++//    public void cogerTenedor(){
++//        tenedor.setInUse(true);
++//        tenedor2.setInUse(true);
++//    }
+ 
++    public void dejarTenedor(){
++        tenedor.setInUse(false);
++        tenedor2.setInUse(false);
+     }
+-    public void siesta() {
++
++
++    public  void siesta(){
++
+         try {
+-            Thread.sleep(1000);
+-        } catch (InterruptedException e) {
++
++            Thread.sleep(4000);
++        }catch (InterruptedException e) {
+             throw new RuntimeException(e);
+         }
++
++
+     }
+ 
+     @Override
+     public void run() {
+         while (true) {
+             cogerTenedores();
++            dejarTenedor();
++            siesta();
++
+         }
++
++
+     }
+ }
