@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b64b008-4261-4c11-98fd-c82fc7e12999" name="Changes" comment="asi esta totalmente bloqueado por  eso comen de uno en uno">
-      <change beforePath="$PROJECT_DIR$/src/main/java/es/ieslavereda/demojavafx/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/ieslavereda/demojavafx/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/es/ieslavereda/demojavafx/controller/ExampleTaskJFXController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/ieslavereda/demojavafx/controller/ExampleTaskJFXController.java" afterDir="false" />
+    <list default="true" id="1b64b008-4261-4c11-98fd-c82fc7e12999" name="Changes" comment="creo">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/es/ieslavereda/demojavafx/controller/FilosofoHIlo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/ieslavereda/demojavafx/controller/FilosofoHIlo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/es/ieslavereda/demojavafx/model/Tenedor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/ieslavereda/demojavafx/model/Tenedor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/es/ieslavereda/demojavafx/controller/FilosofoHIlo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/es/ieslavereda/demojavafx/controller/FilosofoHIlo.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +78,23 @@
       <option name="project" value="LOCAL" />
       <updated>1698413724299</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="12123">
+      <option name="closed" value="true" />
+      <created>1698692515884</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1698692515884</updated>
+    </task>
+    <task id="LOCAL-00004" summary="creo">
+      <option name="closed" value="true" />
+      <created>1698692612866</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1698692612866</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -95,6 +110,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="asi esta totalmente bloqueado por  eso comen de uno en uno" />
-    <option name="LAST_COMMIT_MESSAGE" value="asi esta totalmente bloqueado por  eso comen de uno en uno" />
+    <MESSAGE value="12123" />
+    <MESSAGE value="creo" />
+    <option name="LAST_COMMIT_MESSAGE" value="creo" />
   </component>
 </project>
