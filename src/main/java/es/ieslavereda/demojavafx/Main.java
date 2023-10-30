@@ -8,19 +8,17 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-
         Tenedor[] tenedors = new Tenedor[5];
-        FilosofoHIlo[] filosofos = new FilosofoHIlo[5];
         for (int i = 0; i < 5; i++) {
             tenedors[i]= new Tenedor("tenedor " + i);
         }
+        /// no pueden 2 coger el mismo , no hay que consultar estado
 
-        System.out.println(tenedors.length);
-        FilosofoHIlo filosofo1 = new FilosofoHIlo("Filosofo 1", tenedors[4], tenedors[0]);
-        FilosofoHIlo filosofo2 = new FilosofoHIlo("Filosofo 2", tenedors[0], tenedors[1]);
-        FilosofoHIlo filosofo3 = new FilosofoHIlo("Filosofo 3", tenedors[1], tenedors[2]);
-        FilosofoHIlo filosofo4 = new FilosofoHIlo("Filosofo 4", tenedors[2], tenedors[3]);
-        FilosofoHIlo filosofo5 = new FilosofoHIlo("Filosofo 5", tenedors[3], tenedors[4]);
+        FilosofoHIlo filosofo1 = new FilosofoHIlo("Filosofo 1", tenedors[0], tenedors[2]);
+        FilosofoHIlo filosofo2 = new FilosofoHIlo("Filosofo 2", tenedors[0], tenedors[3]);
+        FilosofoHIlo filosofo3 = new FilosofoHIlo("Filosofo 3", tenedors[1], tenedors[3]);
+        FilosofoHIlo filosofo4 = new FilosofoHIlo("Filosofo 4", tenedors[1], tenedors[4]);
+        FilosofoHIlo filosofo5 = new FilosofoHIlo("Filosofo 5", tenedors[2], tenedors[4]);
 
 
 

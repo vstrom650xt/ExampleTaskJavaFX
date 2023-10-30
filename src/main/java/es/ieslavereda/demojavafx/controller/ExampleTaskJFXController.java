@@ -1,6 +1,5 @@
 //package es.ieslavereda.demojavafx.controller;
 //
-//import es.ieslavereda.demojavafx.model.RegionColor;
 //import javafx.concurrent.Task;
 //import javafx.fxml.FXML;
 //import javafx.geometry.Insets;
