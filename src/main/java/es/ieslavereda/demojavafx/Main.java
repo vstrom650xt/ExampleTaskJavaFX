@@ -20,8 +20,6 @@ public class Main {
         FilosofoHIlo filosofo4 = new FilosofoHIlo("Filosofo 4", tenedors[1], tenedors[4]);
         FilosofoHIlo filosofo5 = new FilosofoHIlo("Filosofo 5", tenedors[2], tenedors[4]);
 
-
-
         Thread thread1 = new Thread(filosofo1);
         Thread thread2 = new Thread(filosofo2);
         Thread thread3 = new Thread(filosofo3);
